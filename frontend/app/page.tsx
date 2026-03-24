@@ -7,6 +7,8 @@ import { DeckModal } from "./components/DeckModal";
 import { GlobalDashboard } from "@/app/components/GlobalDashboard";
 import { DeckCard } from "@/app/components/DeckCard";
 import { LoreKeepersLogo } from "@/app/components/LoreKeepersLogo"
+import {Footer} from "@/app/components/Footer";
+import {HelpModal} from "@/app/components/HelpModal";
 
 
 export default function Home() {
@@ -16,6 +18,7 @@ export default function Home() {
 	const [mmrHistoryByDay, setMmrHistoryByDay] = useState([]);
 	const [chartMode, setChartMode] = useState('game');
 	const [selectedDeck, setSelectedDeck] = useState(null);
+	const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
 	// NOUVEAU : État pour gérer l'animation de chargement
 	const [isProcessing, setIsProcessing] = useState(false);
@@ -98,7 +101,7 @@ export default function Home() {
 	};
 
 	return (
-		<main className="p-8 bg-gray-900 text-white min-h-screen font-sans relative overflow-x-hidden">
+		<main className="flex flex-col p-8 bg-gray-900 text-white min-h-screen font-sans relative overflow-x-hidden">
 
 			{/* Définition des animations personnalisées CSS directement dans le JSX */}
 			<style dangerouslySetInnerHTML={{__html: `
@@ -114,6 +117,9 @@ export default function Home() {
 
 			{/* Modale de chargement */}
 			{isProcessing && <LoadingModal />}
+
+			{/* NOUVELLE MODALE D'AIDE */}
+			{isHelpModalOpen && <HelpModal onClose={() => setIsHelpModalOpen(false)} />}
 
 			{/* Modale de détails du deck */}
 			{selectedDeck && <DeckModal deck={selectedDeck} onClose={() => setSelectedDeck(null)} />}
@@ -158,6 +164,14 @@ export default function Home() {
 						<label htmlFor="fileInput" className="cursor-pointer bg-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 inline-block">
 							Select .csv file
 						</label>
+						<div className="mt-2">
+							<button
+								onClick={() => setIsHelpModalOpen(true)}
+								className="text-sm text-gray-500 hover:text-blue-400 underline transition-colors"
+							>
+								Where do I find my .csv file?
+							</button>
+						</div>
 					</div>
 				)}
 
@@ -185,6 +199,7 @@ export default function Home() {
 					</>
 				)}
 			</div>
+			<Footer />
 		</main>
 	);
 }
