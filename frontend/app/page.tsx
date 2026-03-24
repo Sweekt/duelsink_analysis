@@ -19,23 +19,18 @@ export default function Home() {
 	const [chartMode, setChartMode] = useState('game');
 	const [selectedDeck, setSelectedDeck] = useState(null);
 	const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
-
-	// NOUVEAU : État pour gérer l'animation de chargement
 	const [isProcessing, setIsProcessing] = useState(false);
 
 	const handleFileUpload = (e) => {
 		const file = e.target.files[0];
 		if (!file) return;
 
-		// On lance l'animation de chargement
 		setIsProcessing(true);
 
 		Papa.parse(file, {
 			header: true,
 			dynamicTyping: true,
 			complete: (results) => {
-				// On utilise un setTimeout pour s'assurer que l'utilisateur
-				// voit la belle animation au moins 1 seconde
 				setTimeout(() => {
 					processData(results.data);
 					setIsProcessing(false);

@@ -63,11 +63,11 @@ export const GlobalDashboard = ({ globalStats, mmrHistory, mmrHistoryByDay, char
 					<div className="flex-grow w-full">
 						<ResponsiveContainer width="100%" height="100%">
 							<LineChart data={currentChartData} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
-								<CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
-								<XAxis dataKey={chartMode === 'game' ? 'match' : 'date'} stroke="#6b7280" tick={{ fontSize: 12 }} minTickGap={20} />
-								<YAxis stroke="#6b7280" tick={{ fontSize: 12 }} domain={['dataMin - 10', 'dataMax + 10']} />
-								<RechartsTooltip content={<CustomTooltip />} />
-								<Line type="monotone" dataKey="mmr" stroke="#8b5cf6" strokeWidth={3} dot={{ r: 3, fill: '#8b5cf6', strokeWidth: 0 }} activeDot={{ r: 6, fill: '#c084fc', stroke: '#fff', strokeWidth: 2 }} animationDuration={1500} />
+								<CartesianGrid key="grid" strokeDasharray="3 3" stroke="#374151" vertical={false} />
+								<XAxis key="xaxis" dataKey={chartMode === 'game' ? 'match' : 'date'} stroke="#6b7280" tick={{ fontSize: 12 }} minTickGap={20} />
+								<YAxis key="yaxis" stroke="#6b7280" tick={{ fontSize: 12 }} domain={['dataMin - 10', 'dataMax + 10']} />
+								<RechartsTooltip key="tooltip" content={<CustomTooltip />} />
+								<Line key="line1" type="monotone" dataKey="mmr" stroke="#8b5cf6" strokeWidth={3} dot={{ r: 3, fill: '#8b5cf6', strokeWidth: 0 }} activeDot={{ r: 6, fill: '#c084fc', stroke: '#fff', strokeWidth: 2 }} animationDuration={1500} />
 							</LineChart>
 						</ResponsiveContainer>
 					</div>
