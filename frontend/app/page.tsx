@@ -4,8 +4,9 @@ import React, { useState } from 'react';
 import Papa from 'papaparse';
 import { LoadingModal } from "./components/LoadingModal";
 import { DeckModal } from "./components/DeckModal";
-import {GlobalDashboard} from "@/app/components/GlobalDashboard";
-import {DeckCard} from "@/app/components/DeckCard";
+import { GlobalDashboard } from "@/app/components/GlobalDashboard";
+import { DeckCard } from "@/app/components/DeckCard";
+import { LoreKeepersLogo } from "@/app/components/LoreKeepersLogo"
 
 
 export default function Home() {
@@ -124,9 +125,7 @@ export default function Home() {
 				<div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
 					<div className="flex items-center gap-3">
 						{/* Icône de logo */}
-						<svg className="w-10 h-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-						</svg>
+						<LoreKeepersLogo className="w-10 h-10 text-blue-500" />
 						<h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 tracking-tight">
 							Duels.ink Analyzer
 						</h1>
